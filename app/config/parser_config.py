@@ -22,6 +22,7 @@ COMPUTERS_TABLETS_URL = urljoin(
 )
 
 options = Options()
+options.add_argument("--headless=new")
 
 
 @dataclass

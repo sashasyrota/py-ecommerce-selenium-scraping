@@ -1,5 +1,6 @@
 from dataclasses import astuple
 
+from tqdm import tqdm
 from selenium.common import (
     NoSuchElementException,
     ElementNotInteractableException,
@@ -33,7 +34,7 @@ def get_product_list(driver: WebDriver, url: str) -> list:
         By.CSS_SELECTOR, ".card.thumbnail"
     )
     products_obj = []
-    for product in page_products_list:
+    for product in tqdm(page_products_list):
         result_product = scrape_single_product(product, driver)
         products_obj.append(result_product)
     product_tuple = [astuple(product_obj) for product_obj in products_obj]
